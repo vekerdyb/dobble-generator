@@ -31,7 +31,7 @@ def generate_new_card(cards, degree, max_symbols):
     card = []
     while len(card) < degree:
         symbol = get_next_possible_symbol(cards, card, degree, max_symbols)
-        if symbol:
+        if symbol is not None:
             card.append(symbol)
         else:
             return False
@@ -47,10 +47,12 @@ def generate_deck(degree, max_symbols):
             cards.append(card)
         else:
             generate = False
+            print("last state")
+            print(cards)
     for card in cards:
         print(', '.join([str(c) for c in card]))
 
 
 if __name__ == '__main__':
-    generate_deck(3, 7)
+    generate_deck(8, 57)
     # print(get_banned([[1, 2, 3], [1, 4, 5], [2, 9, 8]], [1]))
