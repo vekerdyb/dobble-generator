@@ -1,5 +1,5 @@
-from dobble.generator import generate_deck
-from dobble.helper import get_matches, get_matching_cards, matching_items
+from generator3 import generate_deck
+from dobble.helper import get_matching_cards, matching_items
 from unittest2 import TestCase
 
 

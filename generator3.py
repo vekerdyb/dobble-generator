@@ -38,27 +38,30 @@ def generate_new_card(cards, degree, max_symbols):
     return card
 
 
-def generate_deck(degree, max_symbols):
+def generate_deck(degree):
+    n = degree - 1
+    max_symbols = get_maximum_deck_size_for_degree(degree)
     generate = True
-    cards = []
+    deck = []
     while generate:
-        card = generate_new_card(cards, degree, max_symbols)
+        card = generate_new_card(deck, degree, max_symbols)
         if card:
-            cards.append(card)
+            deck.append(card)
         else:
             generate = False
-            print("last state")
-            print(cards)
-    return cards
+    return tuple([tuple(card) for card in deck])
+
+def get_maximum_deck_size_for_degree(degree):
+    n = degree - 1
+    return n * n + n + 1
 
 if __name__ == '__main__':
     degree = 3
     n = degree - 1
-    max_symbols = n * n + n + 1
-    deck = generate_deck(degree, max_symbols)
+    deck = generate_deck(degree)
     for i, card in enumerate(deck, start=1):
         print('{:>3}: {}'.format(i, ', '.join([str(c) for c in card])))
 
-    print('{} cards found out of {}'.format(len(deck), max_symbols))
+    print('{} cards found out of {}'.format(len(deck), get_maximum_deck_size_for_degree(degree)))
 
     # print(get_banned([[1, 2, 3], [1, 4, 5], [2, 9, 8]], [1]))

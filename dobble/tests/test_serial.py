@@ -9,17 +9,17 @@ class SerialGeneratorTest(TestCase):
         self.assertEqual(deck, ((0,),))
 
     def test_should_return_the_correct_number_of_cards(self):
-        for d in range(1, 5):
+        for d in range(4):
             n = d - 1
             self.assertEqual(len(generate_deck(d)), n * n + n + 1)
 
     def test_should_return_cards_with_degree_symbols(self):
-        for d in range(1, 5):
+        for d in range(4):
             for card in generate_deck(d):
                 self.assertEqual(len(card), d)
 
     def test_should_have_each_card_connected_to_every_other(self):
-        for d in range(1, 5):
+        for d in range(4):
             deck = generate_deck(d)
             for card in deck:
                 every_other_card = set(deck)
@@ -28,7 +28,7 @@ class SerialGeneratorTest(TestCase):
                     self.assertIn(card, get_matching_cards(other_card, deck))
 
     def test_should_have_each_card_connected_to_every_other_with_one_symbol_exactly(self):
-        for d in range(1, 5):
+        for d in range(4):
             deck = generate_deck(d)
             for card in deck:
                 every_other_card = set(deck)
