@@ -49,10 +49,16 @@ def generate_deck(degree, max_symbols):
             generate = False
             print("last state")
             print(cards)
-    for card in cards:
-        print(', '.join([str(c) for c in card]))
-
+    return cards
 
 if __name__ == '__main__':
-    generate_deck(8, 57)
+    degree = 3
+    n = degree - 1
+    max_symbols = n * n + n + 1
+    deck = generate_deck(degree, max_symbols)
+    for i, card in enumerate(deck, start=1):
+        print('{:>3}: {}'.format(i, ', '.join([str(c) for c in card])))
+
+    print('{} cards found out of {}'.format(len(deck), max_symbols))
+
     # print(get_banned([[1, 2, 3], [1, 4, 5], [2, 9, 8]], [1]))
